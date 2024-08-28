@@ -53,7 +53,7 @@ export default function Product({ product }) {
       <div className="flex justify-evenly">
         <button
           onClick={() => addProductToCart(product.id)}
-          className={`btn btn-primary ${classes.addToCartBtn}`}
+          className={`btn ${classes.addToCartBtn}`}
         >
           <i class="fa-solid fa-plus"></i> Add
         </button>

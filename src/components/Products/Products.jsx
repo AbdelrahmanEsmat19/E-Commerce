@@ -60,12 +60,12 @@ export default function Products() {
         ) : (
           <div className="container mx-auto">
             <h1 className="text-center mb-4">
-              Our <span className="head-color ">Products</span>
+              Our <span className="text-blue-600 ">Products</span>
             </h1>
             <form className="mb-8" onSubmit={handleSubmit}>
               <label
                 htmlFor="search"
-                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                className="mb-2 text-sm font-medium text-gray-900  sr-only dark:text-white"
               >
                 Search
               </label>

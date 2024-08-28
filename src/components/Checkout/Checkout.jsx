@@ -25,7 +25,7 @@ export default function Checkout() {
 
   async function handleCheckout(values) {
     const url = isOnline
-      ? `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://https://abdelrahmanesmat19.github.io/E-Commerce`
+      ? `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://abdelrahmanesmat19.github.io/E-Commerce/`
       : `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`;
     const res = await getPayment(url, values);
 
