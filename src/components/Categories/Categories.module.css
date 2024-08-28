@@ -1,0 +1,31 @@
+.categoriesSection {
+  @apply pt-10 pb-10 bg-gray-100;
+}
+
+.container {
+  @apply max-w-5xl mx-auto px-4;
+}
+
+.title {
+  @apply text-lg font-bold text-center mb-5;
+}
+
+.highlight {
+  @apply text-blue-600;
+}
+
+.card {
+  @apply bg-white w-fit border border-gray-300 rounded-lg p-4 shadow-md transition duration-300 ease-in-out;
+}
+
+.card:hover {
+  @apply shadow-lg -translate-y-1 cursor-pointer;
+}
+
+.image {
+  @apply w-60 h-60 object-cover rounded-t-lg;
+}
+
+.cardTitle {
+  @apply text-lg font-bold mb-2.5;
+}

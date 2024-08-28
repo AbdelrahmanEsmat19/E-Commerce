@@ -1,0 +1,23 @@
+.categoryItem {
+  @apply text-center p-4 cursor-pointer transition duration-300 ease-in-out;
+}
+
+.categoryItem:hover {
+  @apply -translate-y-5;
+}
+
+.categoryItem img {
+  @apply w-full rounded-lg shadow-md;
+}
+
+.slick-dots {
+  @apply absolute bottom-[-20px] left-1/2 -translate-x-1/2 flex justify-center items-center gap-5;
+}
+
+.slick-dot {
+  @apply w-10 h-10 rounded-full bg-gray-300;
+}
+
+.slick-dot.slick-active {
+  @apply bg-red-600;
+}

@@ -1,0 +1,52 @@
+.brandsSection {
+  @apply bg-gray-100 py-10;
+}
+
+.container {
+  @apply max-w-5xl mx-auto px-4;
+}
+
+.title {
+  @apply text-lg font-bold text-center mb-5;
+}
+
+.highlight {
+  @apply text-blue-600;
+}
+
+.brandCard {
+  @apply bg-white border border-gray-300 rounded-lg p-5 shadow-md transition duration-300 ease-in-out;
+  width: 250px; 
+}
+
+.brandCard:hover {
+  @apply shadow-lg -translate-y-1 cursor-pointer;
+}
+
+.brandCard:hover .brandImage {
+  @apply scale-110;
+}
+
+.brandImage {
+  @apply flex justify-center mb-2.5 transition duration-300 ease-in-out;
+}
+
+.image {
+  @apply w-40 h-20 object-cover rounded-full;
+}
+
+.brandName {
+  @apply text-lg font-bold mb-2.5;
+}
+
+.brandDescription {
+  @apply text-sm text-gray-600;
+}
+
+.exploreButton {
+  @apply bg-blue-600 text-white px-5 py-2.5 font-bold cursor-pointer transition duration-300 ease-in-out;
+}
+
+.exploreButton:hover {
+  @apply bg-blue-800;
+}

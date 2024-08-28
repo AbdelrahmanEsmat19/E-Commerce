@@ -1,0 +1,40 @@
+.productCard {
+  @apply shadow-md items-center justify-center rounded-lg overflow-hidden w-64 mx-5 mb-5 transition duration-300;
+}
+
+.productCard:hover {
+  @apply scale-102 shadow-lg;
+}
+
+
+.productImage {
+  @apply w-full h-48 object-cover rounded-t-lg;
+}
+
+.productInfo {
+  @apply p-4;
+}
+
+.category {
+  @apply text-sm text-green-900 uppercase;
+}
+
+.productTitle {
+  @apply text-lg font-semibold truncate;
+}
+
+.productDetails {
+  @apply flex justify-between text-gray-500 font-light;
+}
+
+.rating {
+  @apply flex items-center;
+}
+
+.addToCartBtn {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
+
+.addToCartBtn:hover {
+  @apply bg-blue-900;
+}
