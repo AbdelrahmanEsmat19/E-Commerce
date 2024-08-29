@@ -24,7 +24,7 @@ export default function Product({ product }) {
     <div
       className={`card rounded-xl lg:w-[250px] w-full ${classes.productCard}`}
     >
-      <Link to={`/product-details/${product.id}/${product.category.name}`}>
+      <Link  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to={`/product-details/${product.id}/${product.category.name}`}>
         <img
           src={product.imageCover}
           alt={product.title}

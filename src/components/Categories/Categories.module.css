@@ -1,5 +1,5 @@
 .categoriesSection {
-  @apply pt-10 pb-10 bg-gray-100;
+  @apply py-10;
 }
 
 .container {

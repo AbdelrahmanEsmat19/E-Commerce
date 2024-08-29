@@ -59,8 +59,8 @@ export default function Products() {
           <Loader fullPage={true} />
         ) : (
           <div className="container mx-auto">
-            <h1 className="text-center mb-4">
-              Our <span className="text-blue-600 ">Products</span>
+            <h1 className="text-lg font-bold text-center mb-5">
+              Our <span className="color-green">Products</span>
             </h1>
             <form className="mb-8" onSubmit={handleSubmit}>
               <label

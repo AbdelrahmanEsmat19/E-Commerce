@@ -92,7 +92,7 @@ export default function WishList() {
                         <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                           <button
                             onClick={() => addToCart(product.id)}
-                            className="font-medium  bg-green-600 p-2 text-white rounded dark:text-green-500 hover:bg-green-400"
+                            className="btn"
                           >
                             AddToCart
                           </button>

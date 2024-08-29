@@ -25,7 +25,7 @@ export default function ProductDetails() {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block", background: "blue" }}
+        style={{ ...style, display: "block", background: "green" }}
         onClick={onClick}
       />
     );
@@ -36,7 +36,7 @@ export default function ProductDetails() {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block", background: "blue" }}
+        style={{ ...style, display: "block", background: "green" }}
         onClick={onClick}
       />
     );
@@ -55,6 +55,7 @@ export default function ProductDetails() {
   };
 
   async function GetProductDetails(id) {
+    
     setIsLoading(true);
     try {
       const { data } = await axios.get(
@@ -106,9 +107,9 @@ export default function ProductDetails() {
                 <div className="w-2/3 px-20  ">
                   <Helmet>
                     <meta charSet="utf-8" />
-                    <title>{productDetails.slug} </title>
+                    <title>{`${productDetails.slug}`} </title>
                     <link rel="canonical" href="http://mysite.com/example" />
-                  </Helmet>
+                  </Helmet>{" "}
                   <h1 className="mb-4 text-left">{productDetails.title}</h1>
                   <p className="mb-4 text-left">{productDetails.description}</p>
                   <div className="mb-3 flex justify-between items-center text-gray-500 font-light">
@@ -142,7 +143,6 @@ export default function ProductDetails() {
                       </button>
                     </div>
                   </div>
-
                   <button
                     onClick={() => addProductToCart(productDetails.id)}
                     className="btn text-white lg:w-full"

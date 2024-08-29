@@ -19,11 +19,11 @@ export default function Brands() {
     <section className={classes.brandsSection}>
       <div className={classes.container}>
         <h1 className={classes.title}>
-          Our <span className={classes.highlight}>Brands</span>
+          Our <span className={"color-green"}>Brands</span>
         </h1>
 
         <div
-          className={"grid gap-5  grid-cols-1 justify-items-center lg:grid-cols-3 md:grid-cols-4 "}
+          className={"grid gap-8 grid-cols-1 justify-items-center lg:grid-cols-3 md:grid-cols-4 "}
         >
           {isError ? (
             <Error />
@@ -39,7 +39,7 @@ export default function Brands() {
                 </div>
                 <h2 className={classes.brandName}>{brand.name}</h2>
                 <p className={classes.brandDescription}>{brand.description}</p>
-                <button className={classes.exploreButton}>
+                <button className={'btn'}>
                   Explore {brand.name}
                 </button>
               </div>

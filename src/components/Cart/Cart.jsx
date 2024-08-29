@@ -212,7 +212,7 @@ export default function Cart() {
               </Link>
               <Link
                 to={"/cart"}
-                className="p-3 bg-green-300 w-full "
+                className="p-3 bg-red-600 text-white w-full "
                 onClick={() => removeAllProductsCart()}
               >
                 CLear All Cart
