@@ -57,7 +57,7 @@ export default function MainSlider() {
     <>
       <Slider {...settings}>
         {images.map((image, index) => (
-          <section key={index} className="pt-5">
+          <section key={index} className="pt-5 lg:p-0">
             <div className="container mx-auto">
               <div className="relative ">
                 <img className="w-full h-[600px] " src={image.src} alt="" />

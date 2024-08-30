@@ -34,7 +34,7 @@ export default function RelatedProducts() {
   return (
     <>
       <section className="py-20">
-        <div className="container mx-auto">
+        <div className="container  mx-auto">
           {isLoading ? (
             <Loader />
           ) : error ? (

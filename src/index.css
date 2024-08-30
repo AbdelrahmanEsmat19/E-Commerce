@@ -33,19 +33,16 @@ body {
 .main-color {
   background-color: var(--main--color);
 }
-.color-green{
+.color-green {
   color: var(--main--color);
 }
+
 h1 {
   font-size: 48px;
 }
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  --main--color:#099609;
+  --main--color: #099609;
 }
 
 .card {

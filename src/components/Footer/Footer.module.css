@@ -1,1 +1,6 @@
 .Footer {}
+
+
+.liClasses{
+    @apply cursor-pointer text-gray-600 hover:text-[#099609] transition-all duration-150 ease-in-out
+  }
