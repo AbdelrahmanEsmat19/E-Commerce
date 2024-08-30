@@ -48,7 +48,7 @@ export default function Checkout() {
 
   return (
     <>
-      <div className="max-w-xl mx-auto my-10">
+      <div className="max-w-xl mx-auto my-10 ">
         <h1 className="mb-5 text-3xl font-bold">Checkout:</h1>
         <Helmet>
           <meta charSet="utf-8" />

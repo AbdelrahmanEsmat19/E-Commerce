@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import classes from "./MyOrders.module.css";
 import { CartContext } from "../../context/CartContext";
 import axios from "axios";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 export default function MyOrders() {
   const { cartOwner } = useContext(CartContext);
