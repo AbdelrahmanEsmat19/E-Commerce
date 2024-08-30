@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 
 export default function Register() {
-
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -71,8 +70,8 @@ export default function Register() {
 
   return (
     <>
-      <div className="max-w-xl mx-auto my-8 lg:my-0">
-        <h1 className="mb-5 text-3xl font-bold">Register:</h1>
+      <div className="max-w-xl mx-auto my-10 ">
+        <h1 className="mb-3 text-3xl font-bold">Register:</h1>
         <div>
           {error && (
             <div className="bg-red-300 p-2 text-black mb-6">{error}</div>
@@ -224,9 +223,9 @@ export default function Register() {
           </div>
           <div className="my-4">
             <p>
-              Have an email ?{" "}
+              Already have an account?{" "}
               <Link className="text-blue-500 underline" to={"/login"}>
-                Login
+                Sign in
               </Link>{" "}
             </p>
           </div>

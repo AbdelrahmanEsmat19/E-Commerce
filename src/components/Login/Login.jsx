@@ -57,7 +57,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="max-w-xl mx-auto my-14 lg:my-0">
+      <div className="max-w-xl mx-auto my-20">
         <h1 className="mb-5 text-3xl font-bold">Login:</h1>
         <div>
           {error && (
@@ -130,15 +130,16 @@ export default function Login() {
 
             <div className="mt-4">
               <p>
-                Not a member ?{" "}
+              New Customer? ?{" "}
                 <Link className="text-blue-500 underline" to={"/register"}>
-                  Register
+                  Sign up
                 </Link>{" "}
               </p>
             </div>
             <div className="mt-4">
               <Link className="text-blue-500 underline" to={"/forget-password"}>
-                Forget your password ?
+              Forgotten password?
+
               </Link>
             </div>
           </div>
