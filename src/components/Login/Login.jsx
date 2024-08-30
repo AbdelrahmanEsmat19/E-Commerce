@@ -128,12 +128,12 @@ export default function Login() {
               )}
             </button>
 
-            <div className="mt-4">
+            <div className="mt-4 ">
               <p>
-              New Customer? ?{" "}
-                <Link className="text-blue-500 underline" to={"/register"}>
-                  Sign up
-                </Link>{" "}
+              New Customer?   
+                <Link className="text-blue-500 underline ps-1" to={"/register"}>
+                   Sign up
+                </Link>
               </p>
             </div>
             <div className="mt-4">
