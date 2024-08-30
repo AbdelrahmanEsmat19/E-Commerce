@@ -1,0 +1,1 @@
+import{j as r}from"./index-B7BCiI2A.js";import{H as e}from"./Helmet-Cxk4P1_l.js";function o(){return r.jsxs(r.Fragment,{children:[r.jsx("h1",{children:"Error"}),r.jsxs(e,{children:[r.jsx("meta",{charSet:"utf-8"}),r.jsx("title",{children:"Error Page"}),r.jsx("link",{rel:"canonical",href:"http://mysite.com/example"})]})]})}export{o as default};
