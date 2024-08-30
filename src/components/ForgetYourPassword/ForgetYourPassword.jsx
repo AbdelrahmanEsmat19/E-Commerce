@@ -126,9 +126,9 @@ export default function ForgetYourPassword() {
               >
                 Please enter your Email.
               </p>
-              {error && <p style={{ color: "red" }}>{error}</p>}
+              {error && <p className="text-red-700">{error}</p>}
               {success && (
-                <p style={{ color: "green" }}>
+                <p className="text-green-600">
                   Password reset email sent successfully!
                 </p>
               )}
@@ -183,7 +183,7 @@ export default function ForgetYourPassword() {
               >
                 Please enter the verification code sent to your email.
               </p>
-              {error && <p style={{ color: "red" }}>{error}</p>}
+              {error && <p className="text-red-700">{error}</p>}
               <button
                 type="submit"
                 class="text-white  end-2.5 bottom-2.5 mt-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -258,7 +258,7 @@ export default function ForgetYourPassword() {
                 >
                   Please enter your new password.
                 </p>
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                {error && <p className="text-red-700">{error}</p>}
 
                 <button
                   type="submit"
