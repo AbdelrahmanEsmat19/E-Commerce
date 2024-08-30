@@ -4,7 +4,7 @@ import { CartContext } from "../../context/CartContext";
 import { toast } from "react-toastify";
 import { UserContext } from "../../context/UserContext";
 import { WishListContext } from "../../context/WishListContext";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 export default function WishList() {
   const { userToken } = useContext(UserContext);
   const { addToCart } = useContext(CartContext);
@@ -49,7 +49,12 @@ export default function WishList() {
           {wishListDetails && wishListDetails.length > 0 ? (
             <>
               <div className=" my-3">
-                <h4 className="text-lg">Total items <span className="text-green-600">{wishListDetails.length}</span></h4>
+                <h4 className="text-lg">
+                  Total items{" "}
+                  <span className="text-green-600">
+                    {wishListDetails.length}
+                  </span>
+                </h4>
               </div>
               <div className="relative overflow-x-auto   shadow-md sm:rounded-lg">
                 <table className="w-full   text-gray-500 dark:text-gray-400">
@@ -124,6 +129,11 @@ export default function WishList() {
               Your wishlist is empty.
             </p>
           )}
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>WishList Page </title>
+            <link rel="canonical" href="http://mysite.com/example" />
+          </Helmet>
         </div>
       </section>
     </>

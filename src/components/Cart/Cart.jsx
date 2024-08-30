@@ -223,6 +223,11 @@ export default function Cart() {
               Your cart is empty. Please add some products to proceed.
             </p>
           )}
+          <Helmet>
+                <meta charSet="utf-8" />
+                <title>Cart Page </title>
+                <link rel="canonical" href="http://mysite.com/example" />
+              </Helmet>
         </div>
       </section>
     </>
