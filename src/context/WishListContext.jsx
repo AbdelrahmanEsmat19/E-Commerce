@@ -26,6 +26,7 @@ export default function WishListContextProvider({ children }) {
         setWishListDetails(data.data);
         setWishListId(data.data._id);
         setWishListProducts((prevProducts) => [...prevProducts, productId]);
+        setNumOfWishlist((prevCount) => prevCount + 1); 
       } else {
         console.log(data);
       }
@@ -35,7 +36,22 @@ export default function WishListContextProvider({ children }) {
       return error.response.data.message;
     }
   }
-
+  
+  async function removeFromWishList(productId) {
+    const endPoint = `https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`;
+  
+    try {
+      const { data } = await axios.delete(endPoint, { headers });
+      setWishListProducts((prevProducts) =>
+        prevProducts.filter((id) => id !== productId)
+      );
+      setNumOfWishlist((prevCount) => prevCount - 1); 
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error.response.data.message;
+    }
+  }
   function isInWishList(productId) {
     return wishlistProducts ? wishlistProducts.includes(productId) : false;
   }
@@ -48,7 +64,6 @@ export default function WishListContextProvider({ children }) {
     const endPoint = "https://ecommerce.routemisr.com/api/v1/wishlist";
     try {
       const { data } = await axios.get(endPoint, { headers });
-
       setNumOfWishlist(data.count);
       return data;
     } catch (error) {
@@ -59,20 +74,6 @@ export default function WishListContextProvider({ children }) {
     userToken && getWishListDetails();
   }, [userToken]);
 
-  async function removeFromWishList(productId) {
-    const endPoint = `https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`;
-
-    try {
-      const { data } = await axios.delete(endPoint, { headers });
-      setWishListProducts((prevProducts) =>
-        prevProducts.filter((id) => id !== productId)
-      );
-      return data;
-    } catch (error) {
-      console.log(error);
-      return error.response.data.message;
-    }
-  }
   return (
     <WishListContext.Provider
       value={{

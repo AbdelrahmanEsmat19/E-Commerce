@@ -7,7 +7,6 @@ import Slide3 from "../../assets/images/slider-image-3.jpeg";
 import Slider from "react-slick";
 
 export default function MainSlider() {
-
   const settings = {
     speed: 500,
     fade: true,
@@ -65,7 +64,9 @@ export default function MainSlider() {
                   <span className="bg-yellow-400 dark:bg-gray-900 p-2 rounded-lg">
                     {image.text.badge}
                   </span>
-                  <h2 className="lg:text-4xl dark:text-black font-bold">{image.text.title}</h2>
+                  <h2 className="lg:text-4xl dark:text-black font-bold">
+                    {image.text.title}
+                  </h2>
                   <p className=" lg:text-2xl text-gray-500 font-medium">
                     {image.text.subtitle}
                   </p>
