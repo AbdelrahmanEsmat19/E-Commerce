@@ -1,5 +1,4 @@
-import "./App.css";
-import { RouterProvider, createHashRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter} from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import Loader from "./components/Loader/Loader";
@@ -33,9 +32,8 @@ import WishListContextProvider from "./context/WishListContext";
 import { Detector } from "react-detect-offline";
 import { useState, useEffect } from "react";
 
-
 const queryClient = new QueryClient();
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "",
     element: <Layout />,
@@ -175,7 +173,6 @@ const router = createHashRouter([
 
 function App() {
   const [showDetector, setShowDetector] = useState(true);
-
 
   useEffect(() => {
     const handleOnline = () => setShowDetector(true);

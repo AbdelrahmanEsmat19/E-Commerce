@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import * as Yup from "yup";
 
 export default function Checkout() {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const { getPayment, cartId, RemoveAllCart, setnumOfCartItems } =
     useContext(CartContext);
   const [isOnline, setIsOnline] = useState(false);
@@ -17,13 +18,26 @@ export default function Checkout() {
     phone: "",
     city: "",
   };
+  const validationSchema = Yup.object().shape({
+    phone: Yup.string()
+      .matches(/^01[0125][0-9]{8}$/, "phone must be egyptian number")
+      .required("Phone is required"),
+    details: Yup.string()
+      .matches(/^[a-zA-Z\s]+$/, "details must be alphabetic characters only")
+      .required("Details are required"),
+    city: Yup.string()
+      .matches(/^[a-zA-Z\s]+$/, "city must be alphabetic characters only")
+      .required("City is required"),
+  });
 
   const formik = useFormik({
     initialValues,
+    validationSchema,
     onSubmit: handleCheckout,
   });
 
   async function handleCheckout(values) {
+    setLoading(true);
     const url = isOnline
       ? `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://abdelrahmanesmat19.github.io/E-Commerce`
       : `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`;
@@ -38,12 +52,13 @@ export default function Checkout() {
         RemoveAllCart();
         setTimeout(() => {
           navigate("/allorders");
-        }, 3000);
+        }, 1000);
       }
     } else {
       console.error("Payment failed:", res);
       toast.error("Payment failed. Please try again.");
     }
+    setLoading(false);
   }
 
   return (
@@ -64,7 +79,8 @@ export default function Checkout() {
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               onChange={formik.handleChange}
-              required
+              value={formik.values.phone}
+              onBlur={formik.handleBlur}
             />
             <label
               htmlFor="phone"
@@ -72,6 +88,9 @@ export default function Checkout() {
             >
               Enter your phone
             </label>
+            {formik.errors.phone && formik.touched.phone && (
+              <div className="text-red-500">{formik.errors.phone}</div>
+            )}
           </div>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -81,7 +100,8 @@ export default function Checkout() {
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               onChange={formik.handleChange}
-              required
+              value={formik.values.details}
+              onBlur={formik.handleBlur}
             />
             <label
               htmlFor="details"
@@ -89,6 +109,9 @@ export default function Checkout() {
             >
               Enter your details
             </label>
+            {formik.errors.details && formik.touched.details && (
+              <div className="text-red-500">{formik.errors.details}</div>
+            )}
           </div>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -98,7 +121,8 @@ export default function Checkout() {
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               onChange={formik.handleChange}
-              required
+              value={formik.values.city}
+              onBlur={formik.handleBlur}
             />
             <label
               htmlFor="city"
@@ -106,6 +130,9 @@ export default function Checkout() {
             >
               Enter your city
             </label>
+            {formik.errors.city && formik.touched.city && (
+              <div className="text-red-500">{formik.errors.city}</div>
+            )}
           </div>
           <div className="flex items-center mb-4">
             <input
@@ -126,9 +153,19 @@ export default function Checkout() {
             type="submit"
             className={`text-white ${
               isOnline ? "bg-blue-600" : "bg-orange-600"
-            } hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-sm font-medium rounded-lg px-5 py-2.5`}
+            } hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-sm font-medium rounded-lg px-5 py-2.5 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading} // Disable the button when loading is true
           >
-            {isOnline ? "Pay With Visa" : "Pay Cash"}
+            {loading ? (
+              <i class="fas fa-spinner fa-spin"></i>
+            ) : isOnline ? (
+              "Pay With Visa"
+            ) : (
+              "Pay Cash"
+            )}
+            {loading ? "Loading..." : isOnline ? "" : ""}
           </button>
         </form>
       </div>

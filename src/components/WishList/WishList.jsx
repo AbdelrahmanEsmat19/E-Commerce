@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 export default function WishList() {
   const { userToken } = useContext(UserContext);
   const { addToCart } = useContext(CartContext);
+  
   const { getWishListDetails, removeFromWishList } =
     useContext(WishListContext);
   const [wishListDetails, setWishListDetails] = useState([]);
@@ -23,7 +24,7 @@ export default function WishList() {
     if (res.status === "success") {
       setWishListDetails(res.data);
       setWishListId(res.data._id);
-      console.log(res);
+      console.log(res.count);
     } else {
       console.log("error");
     }
@@ -50,7 +51,7 @@ export default function WishList() {
             <>
               <div className=" my-3">
                 <h4 className="text-lg">
-                  Total items{" "}
+                  Total items:{" "}
                   <span className="text-green-600">
                     {wishListDetails.length}
                   </span>
@@ -108,7 +109,7 @@ export default function WishList() {
                         <td className="px-6 py-4">
                           <button
                             onClick={() => removeProductWishList(product.id)}
-                            className="font-medium  bg-red-600 p-2 text-white rounded dark:text-red-500 hover:bg-red-400"
+                            className="font-medium  bg-red-600 p-2 text-white dark:text-white rounded dark:text-red-500 hover:bg-red-400"
                           >
                             Remove
                           </button>

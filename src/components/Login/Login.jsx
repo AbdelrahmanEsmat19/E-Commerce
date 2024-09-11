@@ -5,7 +5,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 export default function Login() {
   const [error, setError] = useState(null);
@@ -24,7 +24,11 @@ export default function Login() {
     email: Yup.string().email("Invalid email").required("Email is required"),
 
     password: Yup.string()
-      .min(8, "Password must be at least 8 characters")
+      .min(
+        8,
+        "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+      )
+      .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{8,}$/)
       .required("Password is required"),
   });
   const formik = useFormik({
@@ -54,7 +58,6 @@ export default function Login() {
       setIsLoading(false);
     }
   }
-
   return (
     <>
       <div className="max-w-xl mx-auto my-20">
@@ -89,11 +92,10 @@ export default function Login() {
             ) : null}
           </div>
           <Helmet>
-
-<meta charSet="utf-8" />
-<title>Login Page</title>
-<link rel="canonical" href="http://mysite.com/example" />
-</Helmet>
+            <meta charSet="utf-8" />
+            <title>Login Page</title>
+            <link rel="canonical" href="http://mysite.com/example" />
+          </Helmet>
           <div className="relative z-0 w-full mb-5 group">
             <input
               type={showPassword ? "text" : "password"}
@@ -130,16 +132,15 @@ export default function Login() {
 
             <div className="mt-4 ">
               <p>
-              New Customer?   
+                New Customer?
                 <Link className="text-blue-500 underline ps-1" to={"/register"}>
-                   Sign up
+                  Sign up
                 </Link>
               </p>
             </div>
             <div className="mt-4">
               <Link className="text-blue-500 underline" to={"/forget-password"}>
-              Forgotten password?
-
+                Forgotten password?
               </Link>
             </div>
           </div>

@@ -8,11 +8,12 @@ export const WishListContext = createContext();
 export default function WishListContextProvider({ children }) {
   const { userToken } = useContext(UserContext);
   const [wishListDetails, setWishListDetails] = useState(null);
-    const [wishListId, setWishListId] = useState(null);
+  const [wishListId, setWishListId] = useState(null);
+  const [numOfWishlist, setNumOfWishlist] = useState(null);
 
-    const [wishlistProducts, setWishListProducts] = useState(
-        JSON.parse(localStorage.getItem("wishlistProducts")) || []
-      );
+  const [wishlistProducts, setWishListProducts] = useState(
+    JSON.parse(localStorage.getItem("wishlistProducts")) || []
+  );
   const headers = { token: userToken };
 
   async function addToWishList(productId) {
@@ -24,7 +25,7 @@ export default function WishListContextProvider({ children }) {
         toast.success(data.message);
         setWishListDetails(data.data);
         setWishListId(data.data._id);
-        setWishListProducts((prevProducts) => [...prevProducts, productId]); 
+        setWishListProducts((prevProducts) => [...prevProducts, productId]);
       } else {
         console.log(data);
       }
@@ -34,7 +35,7 @@ export default function WishListContextProvider({ children }) {
       return error.response.data.message;
     }
   }
-  
+
   function isInWishList(productId) {
     return wishlistProducts ? wishlistProducts.includes(productId) : false;
   }
@@ -47,6 +48,8 @@ export default function WishListContextProvider({ children }) {
     const endPoint = "https://ecommerce.routemisr.com/api/v1/wishlist";
     try {
       const { data } = await axios.get(endPoint, { headers });
+
+      setNumOfWishlist(data.count);
       return data;
     } catch (error) {
       return error;
@@ -58,17 +61,19 @@ export default function WishListContextProvider({ children }) {
 
   async function removeFromWishList(productId) {
     const endPoint = `https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`;
-    
+
     try {
       const { data } = await axios.delete(endPoint, { headers });
-      setWishListProducts((prevProducts) => prevProducts.filter((id) => id !== productId));
+      setWishListProducts((prevProducts) =>
+        prevProducts.filter((id) => id !== productId)
+      );
       return data;
     } catch (error) {
       console.log(error);
       return error.response.data.message;
     }
   }
-    return (
+  return (
     <WishListContext.Provider
       value={{
         addToWishList,
@@ -78,7 +83,7 @@ export default function WishListContextProvider({ children }) {
         wishListId,
         removeFromWishList,
         wishListDetails,
-        
+        numOfWishlist,
       }}
     >
       {children}

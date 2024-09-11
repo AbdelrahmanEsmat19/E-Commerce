@@ -3,18 +3,46 @@ import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { CartContext } from "../../context/CartContext";
 import { initFlowbite } from "flowbite";
+import { WishListContext } from "../../context/WishListContext";
 
 function Navbar() {
+  const [darkMode, setDarkMode] = useState(false);
+  const { userToken, setUserToken } = useContext(UserContext);
+  const { numOfCartItems } = useContext(CartContext);
+  const { numOfWishlist } = useContext(WishListContext)
+
   useEffect(() => {
     initFlowbite();
   }, []);
-  const { userToken, setUserToken } = useContext(UserContext);
-  const { numOfCartItems } = useContext(CartContext);
+
+
 
   function handleLogout() {
     localStorage.removeItem("userToken");
     setUserToken(null);
   }
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("dark");
+      setDarkMode(true)
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false)
+
+    }
+  }, []);
+  const handleToggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <nav className="bg-white dark:bg-gray-900 fixed  w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -29,7 +57,7 @@ function Navbar() {
           </span>
         </Link>
         <div className="flex md:order-2 space-x-3 items-center md:space-x-0 rtl:space-x-reverse">
-          <ul className="flex flex-col p-2 md:p-0 me-8 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-col p-2 md:p-0 me-8 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:text-white dark:border-gray-700">
             {userToken ? (
               <>
                 <li onClick={handleLogout}>
@@ -101,7 +129,7 @@ function Navbar() {
                 <NavLink
                   to="/"
                   className={
-                    "block py-2 px-3 text-gray-900  rounded md:bg-transparent md:p-0 md:dark:text-blue-500"
+                    "block py-2 px-3 text-gray-900  rounded md:bg-transparent md:p-0 md:dark:text-white"
                   }
                 >
                   Home
@@ -141,24 +169,29 @@ function Navbar() {
                 <NavLink
                   to="/wishlist"
                   className={
-                    "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    "block py-2 relative px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   }
                 >
+                  
                   WhishList
+                  <div className="absolute inline-flex bottom-0 end-5 top-5 items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full   dark:border-gray-900">
+                  {numOfWishlist}
+                    </div>
+
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="/cart"
                   className={
-                    "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent  dark:border-gray-700"
                   }
                 >
                   <button
                     type="button"
                     className="relative inline-flex items-center  text-sm font-medium text-center text-black  rounded-lg  focus:ring-4 focus:outline-none focus:ring-blue-300"
                   >
-                    <i className="fas fa-cart-shopping fa-2x"></i>
+                    <i className="fas fa-cart-shopping fa-2x dark:text-white"></i>
                     <span className="sr-only">Notifications</span>
                     <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
                       {numOfCartItems}
@@ -166,6 +199,23 @@ function Navbar() {
                   </button>
                 </NavLink>
               </li>
+              <li>
+              <label class="inline-flex items-center cursor-pointer">
+  <input
+    type="checkbox"
+    value=""
+    class="sr-only peer"
+    checked={darkMode}
+  />
+  <div
+    onClick={handleToggleDarkMode}
+    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer"
+  >
+    <i
+      class={`fas ${darkMode ? 'fa-moon' : 'fa-sun'} text-lg text-yellow-300 dark:text-blue-600 transition-all duration-300`}
+    ></i>
+  </div>
+</label>              </li>
             </ul>
           )}
         </div>

@@ -10,13 +10,26 @@ export default function Product({ product }) {
   const { addToCart } = useContext(CartContext);
   const { addToWishList, isInWishList, removeFromWishList } =
     useContext(WishListContext);
-  ``;
+
+  const [loading, setLoading] = useState(false);
+
   async function addProductToCart(productId) {
+    setLoading(true);
     const res = await addToCart(productId);
+    setLoading(false);
     if (res.status === "success") {
       toast.success(res.message);
     } else {
       toast.error("Something went wrong");
+    }
+  }
+
+  async function addProductToWishList(productId) {
+    if (isInWishList(productId)) {
+      await removeFromWishList(productId);
+      toast.warning("Product removed successfully from WishList");
+    } else {
+      await addToWishList(productId);
     }
   }
 
@@ -31,7 +44,7 @@ export default function Product({ product }) {
           className={`rounded-t-lg ${classes.productImage}`}
         />
         <div className={classes.productInfo}>
-          <span className={`text-sm text-green-900 ${classes.category}`}>
+          <span className={`text-sm text-green-900 dark:text-orange-500 ${classes.category}`}>
             {product.category.name}
           </span>
           <h2
@@ -40,7 +53,7 @@ export default function Product({ product }) {
             {product.title}
           </h2>
           <div className={classes.productDetails}>
-            <span className="text-gray-500 font-light">
+            <span className="text-gray-500 dark:text-green-500 font-light">
               {product.price} EGP
             </span>
             <div className={classes.rating}>
@@ -53,25 +66,26 @@ export default function Product({ product }) {
       <div className="flex justify-evenly">
         <button
           onClick={() => addProductToCart(product.id)}
-          className={`btn ${classes.addToCartBtn}`}
+          className={`btn ${classes.addToCartBtn} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={loading}
         >
-          <i class="fa-solid fa-plus"></i> Add
+          {loading ? (
+            <i class="fas fa-spinner fa-spin"></i>
+          ) : (
+            <i class="fa-solid fa-plus"></i>
+          )}
+          {loading ? 'Adding...' : 'Add'}
         </button>
         <button
-          onClick={() => {
-            if (isInWishList(product.id)) {
-              removeFromWishList(product.id);
-              toast.warning("Product removed successfully from WishList");
-            } else {
-              addToWishList(product.id);
-            }
-          }}
+          onClick={() => addProductToWishList(product.id)}
+          className={` ${classes.addToWishListBtn}`}
         >
           {isInWishList(product.id) ? (
             <i class="fa-solid fa-heart fa-2xl text-red-600"></i>
           ) : (
             <i class="fa-solid fa-heart fa-2xl"></i>
           )}
+          {isInWishList(product.id) ? '' : ''}
         </button>{" "}
       </div>
     </div>

@@ -193,14 +193,14 @@ export default function Cart() {
                             onClick={() =>
                               removeProductCart(product.product.id)
                             }
-                            className="font-medium  bg-red-600 p-2 text-white rounded dark:text-red-500 hover:bg-red-400"
+                            className="font-medium  bg-red-600 p-2 text-white dark:text-white rounded dark:text-red-500 hover:bg-red-400"
                           >
                             Remove
                           </button>
                         </td>
                       </tr>
                     ))}
-                    ;
+                    
                   </tbody>
                 </table>
               </div>

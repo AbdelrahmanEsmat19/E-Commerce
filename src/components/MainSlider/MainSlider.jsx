@@ -62,11 +62,11 @@ export default function MainSlider() {
               <div className="relative ">
                 <img className="w-full h-[600px] " src={image.src} alt="" />
                 <div className="w-1/2 ps-4 space-y-4 absolute top-1/2 ">
-                  <span className="bg-yellow-400 p-2 rounded-lg">
+                  <span className="bg-yellow-400 dark:bg-gray-900 p-2 rounded-lg">
                     {image.text.badge}
                   </span>
-                  <h2 className="lg:text-4xl font-bold">{image.text.title}</h2>
-                  <p className="font-light lg:text-2xl text-gray-500 font-medium">
+                  <h2 className="lg:text-4xl dark:text-black font-bold">{image.text.title}</h2>
+                  <p className=" lg:text-2xl text-gray-500 font-medium">
                     {image.text.subtitle}
                   </p>
                 </div>

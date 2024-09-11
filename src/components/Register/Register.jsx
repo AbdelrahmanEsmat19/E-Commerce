@@ -33,7 +33,11 @@ export default function Register() {
       .matches(/^01[0125][0-9]{8}$/, "phone must be egyptian number")
       .required("Phone is required"),
     password: Yup.string()
-      .min(8, "Password must be at least 8 characters")
+      .min(
+        8,
+        "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+      )
+      .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{8,}$/)
       .required("Password is required"),
     rePassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match the password")
