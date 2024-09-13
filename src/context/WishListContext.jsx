@@ -36,6 +36,9 @@ export default function WishListContextProvider({ children }) {
       return error.response.data.message;
     }
   }
+    useEffect(() => {
+    localStorage.setItem("wishlistProducts", JSON.stringify(wishlistProducts));
+  }, [wishlistProducts]);
   
   async function removeFromWishList(productId) {
     const endPoint = `https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`;

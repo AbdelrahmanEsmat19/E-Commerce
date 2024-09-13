@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { CartContext } from "../../context/CartContext";
 import { initFlowbite } from "flowbite";
@@ -10,7 +10,7 @@ function Navbar() {
   const { userToken, setUserToken } = useContext(UserContext);
   const { numOfCartItems } = useContext(CartContext);
   const { numOfWishlist } = useContext(WishListContext);
-
+  const navigate = useNavigate();
   useEffect(() => {
     initFlowbite();
   }, []);
@@ -18,7 +18,14 @@ function Navbar() {
   function handleLogout() {
     localStorage.removeItem("userToken");
     setUserToken(null);
+    navigate("/login");
   }
+
+  useEffect(() => {
+    if (!userToken) {
+      localStorage.removeItem("wishlistProducts");
+    }
+  }, [userToken]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {

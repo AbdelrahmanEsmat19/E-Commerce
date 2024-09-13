@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 export default function WishList() {
   const { userToken } = useContext(UserContext);
   const { addToCart } = useContext(CartContext);
-  
+
   const { getWishListDetails, removeFromWishList } =
     useContext(WishListContext);
   const [wishListDetails, setWishListDetails] = useState([]);
@@ -18,18 +18,27 @@ export default function WishList() {
   useEffect(() => {
     getLoggedUserWishList();
   }, [userToken]);
-
+  useEffect(() => {
+    const storedWishlist = localStorage.getItem("wishlist");
+    if (storedWishlist) {
+      const wishlistData = JSON.parse(storedWishlist);
+      setWishListDetails(wishlistData);
+      setWishListId(wishlistData._id);
+    } else {
+      getLoggedUserWishList();
+    }
+  }, [userToken]);
   async function getLoggedUserWishList() {
     const res = await getWishListDetails();
     if (res.status === "success") {
-      setWishListDetails(res.data);
-      setWishListId(res.data._id);
-      console.log(res.count);
+      const wishlistData = res.data;
+      localStorage.setItem("wishlist", JSON.stringify(wishlistData));
+      setWishListDetails(wishlistData);
+      setWishListId(wishlistData._id);
     } else {
       console.log("error");
     }
   }
-
   async function removeProductWishList(productId) {
     const res = await removeFromWishList(productId);
     if (res.status === "success") {
