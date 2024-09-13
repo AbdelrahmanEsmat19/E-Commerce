@@ -27,13 +27,13 @@ export default function Categories() {
               className={`grid gap-8 grid-cols-1  justify-items-center lg:grid-cols-3 md:grid-cols-3 `}
             >
               {data.map((category) => (
-                <div key={category.id} className={` ${classes.card} `}>
+                <div key={category.id} className={` ${classes.card} dark:bg-gray-900 `}>
                   <img
                     src={category.image}
                     className={classes.image}
                     alt={category.slug}
                   />
-                  <h2 className={` ${classes.cardTitle} mt-4 dark:text-black`}>
+                  <h2 className={` ${classes.cardTitle} mt-4 `}>
                     {category.name}
                   </h2>
                 </div>

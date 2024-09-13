@@ -12,7 +12,7 @@
 
 
 .brandCard {
-  @apply bg-white border border-gray-300 rounded-lg shadow-lg p-5 transition duration-300 ease-in-out;
+  @apply bg-white border border-gray-300 rounded-lg shadow-lg p-5  transition duration-300 ease-in-out;
   width: 250px; 
 }
 

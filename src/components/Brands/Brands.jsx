@@ -23,7 +23,7 @@ export default function Brands() {
         </h1>
 
         <div
-          className={"grid gap-8 grid-cols-1 justify-items-center lg:grid-cols-3 md:grid-cols-4 "}
+          className={"grid gap-8  grid-cols-1 justify-items-center lg:grid-cols-3 md:grid-cols-3 "}
         >
           {isError ? (
             <Error />

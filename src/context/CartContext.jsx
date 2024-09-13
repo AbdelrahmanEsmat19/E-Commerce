@@ -77,6 +77,8 @@ export default function CartContextProvider({ children }) {
       setnumOfCartItems(0);
       setCartDetails({ products: [], totalCartPrice: 0 });
       setCartId(null);
+      toast.warning("Products removed successfully");
+
       return data;
     } catch (error) {
       console.log(error);

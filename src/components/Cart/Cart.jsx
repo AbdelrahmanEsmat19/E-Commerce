@@ -4,7 +4,7 @@ import { CartContext } from "../../context/CartContext";
 import { UserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 export default function Cart() {
   const {
@@ -38,11 +38,11 @@ export default function Cart() {
   }
   async function removeAllProductsCart() {
     const res = await RemoveAllCart();
-    console.log(res);
+
     if (res.status === "success") {
-      toast.warning("Products removed successfully");
+      console.log(res);
     } else {
-      toast.error(res.message);
+      console.log(error);
     }
   }
   async function UpdateQuantity(productId, count) {
@@ -200,7 +200,6 @@ export default function Cart() {
                         </td>
                       </tr>
                     ))}
-                    
                   </tbody>
                 </table>
               </div>
@@ -224,10 +223,10 @@ export default function Cart() {
             </p>
           )}
           <Helmet>
-                <meta charSet="utf-8" />
-                <title>Cart Page </title>
-                <link rel="canonical" href="http://mysite.com/example" />
-              </Helmet>
+            <meta charSet="utf-8" />
+            <title>Cart Page </title>
+            <link rel="canonical" href="http://mysite.com/example" />
+          </Helmet>
         </div>
       </section>
     </>
