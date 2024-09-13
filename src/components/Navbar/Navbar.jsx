@@ -129,7 +129,7 @@ function Navbar() {
                 <NavLink
                   to="/"
                   className={
-                    "block py-2 px-3 text-gray-900  rounded md:bg-transparent md:p-0 md:dark:text-white"
+                    "block py-2 px-3 text-gray-900  rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-white"
                   }
                 >
                   Home
@@ -174,7 +174,7 @@ function Navbar() {
                 >
                   
                   WhishList
-                  <div className="absolute inline-flex bottom-0 end-5 top-5 items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full   dark:border-gray-900">
+                  <div className="absolute inline-flex lg:bottom-0 ms-3 lg:ms-0 md:ms-0  lg:end-5 lg:top-5 items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full   dark:border-gray-900">
                   {numOfWishlist}
                     </div>
 

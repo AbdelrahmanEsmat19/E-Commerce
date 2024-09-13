@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .active {
-  @apply text-green-500 underline ;
+  @apply text-green-500 underline dark:text-blue-900 ;
 }
 .btn {
   @apply main-color text-white hover:bg-[#0aad0a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
