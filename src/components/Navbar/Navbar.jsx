@@ -9,13 +9,11 @@ function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const { userToken, setUserToken } = useContext(UserContext);
   const { numOfCartItems } = useContext(CartContext);
-  const { numOfWishlist } = useContext(WishListContext)
+  const { numOfWishlist } = useContext(WishListContext);
 
   useEffect(() => {
     initFlowbite();
   }, []);
-
-
 
   function handleLogout() {
     localStorage.removeItem("userToken");
@@ -25,11 +23,10 @@ function Navbar() {
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       document.documentElement.classList.add("dark");
-      setDarkMode(true)
+      setDarkMode(true);
     } else {
       document.documentElement.classList.remove("dark");
-      setDarkMode(false)
-
+      setDarkMode(false);
     }
   }, []);
   const handleToggleDarkMode = () => {
@@ -73,6 +70,26 @@ function Navbar() {
                 <li>
                   <NavLink to={"/login"}> Login</NavLink>
                 </li>
+                  <li>
+                <label class="inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    class="sr-only peer"
+                    checked={darkMode}
+                  />
+                  <div
+                    onClick={handleToggleDarkMode}
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer"
+                  >
+                    <i
+                      class={`fas ${
+                        darkMode ? "fa-moon" : "fa-sun"
+                      } text-lg text-yellow-300 dark:text-blue-600 transition-all duration-300`}
+                    ></i>
+                  </div>
+                </label>{" "}
+              </li>
               </>
             )}
           </ul>
@@ -172,12 +189,10 @@ function Navbar() {
                     "block py-2 relative px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   }
                 >
-                  
                   WhishList
                   <div className="absolute inline-flex lg:bottom-0 ms-3 lg:ms-0 md:ms-0  lg:end-5 lg:top-5 items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full   dark:border-gray-900">
-                  {numOfWishlist}
-                    </div>
-
+                    {numOfWishlist}
+                  </div>
                 </NavLink>
               </li>
               <li>
@@ -200,22 +215,25 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-              <label class="inline-flex items-center cursor-pointer">
-  <input
-    type="checkbox"
-    value=""
-    class="sr-only peer"
-    checked={darkMode}
-  />
-  <div
-    onClick={handleToggleDarkMode}
-    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer"
-  >
-    <i
-      class={`fas ${darkMode ? 'fa-moon' : 'fa-sun'} text-lg text-yellow-300 dark:text-blue-600 transition-all duration-300`}
-    ></i>
-  </div>
-</label>              </li>
+                <label class="inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    class="sr-only peer"
+                    checked={darkMode}
+                  />
+                  <div
+                    onClick={handleToggleDarkMode}
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer"
+                  >
+                    <i
+                      class={`fas ${
+                        darkMode ? "fa-moon" : "fa-sun"
+                      } text-lg text-yellow-300 dark:text-blue-600 transition-all duration-300`}
+                    ></i>
+                  </div>
+                </label>{" "}
+              </li>
             </ul>
           )}
         </div>
