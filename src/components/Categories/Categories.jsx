@@ -33,7 +33,7 @@ export default function Categories() {
                     className={classes.image}
                     alt={category.slug}
                   />
-                  <h2 className={` ${classes.cardTitle} mt-4`}>
+                  <h2 className={` ${classes.cardTitle} mt-4 dark:text-black`}>
                     {category.name}
                   </h2>
                 </div>

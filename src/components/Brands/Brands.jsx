@@ -29,7 +29,7 @@ export default function Brands() {
             <Error />
           ) : (
             data.map((brand) => (
-              <div key={brand.id} className={classes.brandCard}>
+              <div key={brand.id} className={`${classes.brandCard} dark:bg-gray-900 `}>
                 <div className={classes.brandImage}>
                   <img
                     src={brand.image}

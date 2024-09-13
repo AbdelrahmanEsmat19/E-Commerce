@@ -42,18 +42,18 @@ function Navbar() {
   }, [darkMode]);
 
   return (
-    <nav className="bg-white dark:bg-gray-900 fixed  w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-evenly lg:justify-between mx-auto p-2 lg:p-4">
+    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+      <div className="max-w-screen-xl flex flex-wrap items-center lg:justify-between mx-auto lg:p-0 p-2 ">
         <Link
           to="/"
-          className={"flex items-center space-x-3 rtl:space-x-reverse"}
+          className={"flex items-center space-x-1 lg:space-x-3 rtl:space-x-reverse"}
         >
           <img src="./favicon.png" className="h-8" alt="Fresh Cart Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl m-9 font-semibold whitespace-nowrap dark:text-white">
             FreshCart
           </span>
         </Link>
-        <div className="flex md:order-2 space-x-3 items-center md:space-x-0 rtl:space-x-reverse">
+        <div className="flex md:order-2 items-center  md:space-x-0 rtl:space-x-reverse">
           <ul className="flex flex-col p-2 md:p-0 me-8 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:text-white dark:border-gray-700">
             {userToken ? (
               <>
@@ -70,26 +70,26 @@ function Navbar() {
                 <li>
                   <NavLink to={"/login"}> Login</NavLink>
                 </li>
-                  <li>
-                <label class="inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    value=""
-                    class="sr-only peer"
-                    checked={darkMode}
-                  />
-                  <div
-                    onClick={handleToggleDarkMode}
-                    class="relative w-11 h-6 mt-3 lg:mt-0 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer"
-                  >
-                    <i
-                      class={`fas ${
-                        darkMode ? "fa-moon" : "fa-sun"
-                      } text-lg text-yellow-300 dark:text-blue-600 transition-all duration-300`}
-                    ></i>
-                  </div>
-                </label>{" "}
-              </li>
+                <li>
+                  <label class="inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value=""
+                      class="sr-only peer"
+                      checked={darkMode}
+                    />
+                    <div
+                      onClick={handleToggleDarkMode}
+                      class="relative w-11 h-6 mt-3 lg:mt-0 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer"
+                    >
+                      <i
+                        class={`fas ${
+                          darkMode ? "fa-moon" : "fa-sun"
+                        } text-lg text-yellow-300 dark:text-blue-600 transition-all duration-300`}
+                      ></i>
+                    </div>
+                  </label>{" "}
+                </li>
               </>
             )}
           </ul>
@@ -111,30 +111,32 @@ function Navbar() {
             </li>
           </ul>
 
-          <button
-            data-collapse-toggle="navbar-sticky"
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600  "
-            aria-controls="navbar-sticky"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
+          {userToken && (
+            <button
+              data-collapse-toggle="navbar-sticky"
+              type="button"
+              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600  "
+              aria-controls="navbar-sticky"
+              aria-expanded="false"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+          )}
         </div>
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
