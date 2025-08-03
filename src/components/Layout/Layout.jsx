@@ -11,7 +11,7 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <div className={classes.container}>
+      <div>
         <Outlet />
       </div>
       {userToken && <Footer />}

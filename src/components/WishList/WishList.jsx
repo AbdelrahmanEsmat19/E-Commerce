@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../context/UserContext";
 import { WishListContext } from "../../context/WishListContext";
 import { Helmet } from "react-helmet";
+
 export default function WishList() {
   const { userToken } = useContext(UserContext);
   const { addToCart } = useContext(CartContext);
