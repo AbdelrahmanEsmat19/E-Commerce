@@ -24,10 +24,7 @@ export default function Login() {
     email: Yup.string().email("Invalid email").required("Email is required"),
 
     password: Yup.string()
-      .min(
-        8,
-        "Password must contain at least one uppercase letter, one lowercase letter, and one number"
-      )
+      .min(8, "At least one uppercase, one lowercase, and one number")
       .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{8,}$/)
       .required("Password is required"),
   });
@@ -85,11 +82,16 @@ export default function Login() {
             >
               Enter your email
             </label>
-            {formik.touched.email && formik.errors.email ? (
-              <div className="text-red-500 font-bold text-left">
-                {formik.errors.email}
-              </div>
-            ) : null}
+
+            {(formik.touched.email || formik.values.email) && (
+              <span
+                className={`absolute right-0 top-1/2 transform -translate-y-1/2 text-xs font-bold pr-2 ${
+                  formik.errors.email ? "text-red-500" : "text-green-500"
+                }`}
+              >
+                {formik.errors.email ? formik.errors.email : null}
+              </span>
+            )}
           </div>
           <Helmet>
             <meta charSet="utf-8" />

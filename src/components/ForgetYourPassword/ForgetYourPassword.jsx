@@ -97,10 +97,10 @@ export default function ForgetYourPassword() {
 
   return (
     <>
-      <form className="max-w-xl mx-auto lg:my-0 my-16" onSubmit={handleSubmit}>
+      <form className="max-w-xl lg:mx-auto mx-20 lg:my-12 my-20" onSubmit={handleSubmit}>
         {step === 0 ? (
           <>
-            <h2 className="font-bold mb-3 text-center border p-3">
+            <h2 className="font-bold my-6 text-center border p-3">
               Forgot Password :
             </h2>
 
@@ -267,7 +267,7 @@ export default function ForgetYourPassword() {
                   {loading ? (
                     <i className="fa-solid fa-spinner fa-spin"></i>
                   ) : (
-                    "Change Passwordy"
+                    "Change Password"
                   )}
                 </button>
               </div>

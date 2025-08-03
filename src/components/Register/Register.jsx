@@ -33,14 +33,14 @@ export default function Register() {
       .matches(/^01[0125][0-9]{8}$/, "phone must be egyptian number")
       .required("Phone is required"),
     password: Yup.string()
-      .min(
-        8,
-        "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+      .min(8, "At least one uppercase, one lowercase, and one number")
+      .matches(
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{8,}$/,
+        "At least one uppercase, one lowercase, and one number"
       )
-      .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{8,}$/)
       .required("Password is required"),
     rePassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match the password")
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Confirmation password is required"),
   });
   const formik = useFormik({
@@ -99,19 +99,29 @@ export default function Register() {
             >
               Enter your name
             </label>
-            {formik.touched.name && formik.errors.name ? (
-              <div className="text-red-500 font-bold text-left">
-                {formik.errors.name}
-              </div>
-            ) : null}
+            {(formik.touched.name || formik.values.name) && (
+  <span
+    className={`absolute right-0 top-1/2 transform -translate-y-1/2 text-xs font-bold pr-2 ${
+      formik.errors.name ? "text-red-500" : "text-green-500"
+    }`}
+  >
+    {formik.errors.name
+      ? formik.errors.name
+      : formik.values.name
+      ? "Valid name ✅"
+      : null}
+  </span>
+)}
+
           </div>
           <div className="relative z-0 w-full mb-5 group">
             <input
               type="email"
               name="email"
               id="email"
+              
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
+              placeholder="example@email.com"
               onChange={formik.handleChange}
               value={formik.values.email}
               onBlur={formik.handleBlur}
@@ -127,11 +137,20 @@ export default function Register() {
             >
               Enter your email
             </label>
-            {formik.touched.email && formik.errors.email ? (
-              <div className="text-red-500 font-bold text-left">
-                {formik.errors.email}
-              </div>
-            ) : null}
+            {(formik.touched.email || formik.values.email) && (
+  <span
+    className={`absolute right-0 top-1/2 transform -translate-y-1/2 text-xs font-bold pr-2 ${
+      formik.errors.email ? "text-red-500" : "text-green-500"
+    }`}
+  >
+    {formik.errors.email
+      ? formik.errors.email
+      : formik.values.email
+      ? "Valid email ✅"
+      : null}
+  </span>
+)}
+
           </div>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -150,11 +169,21 @@ export default function Register() {
             >
               Enter your phone
             </label>
-            {formik.touched.phone && formik.errors.phone ? (
-              <div className="text-red-500 font-bold text-left">
-                {formik.errors.phone}
-              </div>
-            ) : null}
+
+            {(formik.touched.phone || formik.values.phone) && (
+  <span
+    className={`absolute right-0 top-1/2 transform -translate-y-1/2 text-xs font-bold pr-2 ${
+      formik.errors.phone ? "text-red-500" : "text-green-500"
+    }`}
+  >
+    {formik.errors.phone
+      ? formik.errors.phone
+      : formik.values.phone
+      ? "Valid phone ✅"
+      : null}
+  </span>
+)}
+
           </div>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -173,11 +202,21 @@ export default function Register() {
             >
               Enter your password
             </label>
-            {formik.touched.password && formik.errors.password ? (
-              <div className="text-red-500 font-bold text-left">
-                {formik.errors.password}
-              </div>
-            ) : null}
+            {(formik.touched.password || formik.values.password) && (
+  <span
+    className={`absolute right-6 top-1/2 transform -translate-y-1/2 text-xs font-bold pr-2 ${
+      formik.errors.password ? "text-red-500" : "text-green-500"
+    }`}
+  >
+    {formik.errors.password
+      ? formik.errors.password
+      : formik.values.password
+      ? "Valid password ✅"
+      : null}
+  </span>
+)}
+
+
             <button
               type="button"
               className="absolute right-0 top-0 mt-2 mr-2"
@@ -208,11 +247,20 @@ export default function Register() {
             >
               Enter your confirmation password
             </label>
-            {formik.touched.rePassword && formik.errors.rePassword ? (
-              <div className="text-red-500 font-bold text-left">
-                {formik.errors.rePassword}
-              </div>
-            ) : null}
+            {(formik.touched.rePassword || formik.values.rePassword) && (
+  <span
+    className={`absolute right-6 top-1/2 transform -translate-y-1/2 text-xs font-bold pr-2 ${
+      formik.errors.rePassword ? "text-red-500" : "text-green-500"
+    }`}
+  >
+    {formik.errors.rePassword
+      ? formik.errors.rePassword
+      : formik.values.rePassword
+      ? "Passwords match ✅"
+      : null}
+  </span>
+)}
+
             <button
               type="button"
               className="absolute right-0 top-0 mt-2 mr-2"
