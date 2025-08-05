@@ -66,7 +66,7 @@ export default function Cart() {
 
   return (
     <>
-      <section className="py-5">
+      <section className="py-10 px-10 text-center">
         <div className="container mx-auto">
           <h1 className="text-3xl font-bold">Cart</h1>
           {cartDetails && cartDetails.products.length > 0 ? (
@@ -83,12 +83,12 @@ export default function Cart() {
                   </span>
                 </h4>
               </div>
-              <div className="relative overflow-x-auto   shadow-md sm:rounded-lg">
-                <table className="w-full   text-gray-500 dark:text-gray-400">
+              <div className="relative overflow-x-auto    shadow-md sm:rounded-lg">
+                <table className="w-full text-gray-500 dark:text-gray-400">
                   <thead className="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                       <th scope="col" className="px-16 py-3">
-                        <span className="sr-only">Image</span>
+                        Image
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Product
@@ -118,7 +118,7 @@ export default function Cart() {
                         <td className="p-4">
                           <img
                             src={product.product.imageCover}
-                            className="w-16 md:w-32 max-w-full max-h-full"
+                            className="w-16 ms-7 md:w-32 max-w-full max-h-full"
                             alt={product.product.title}
                           />
                         </td>

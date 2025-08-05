@@ -54,8 +54,9 @@ export default function WishList() {
   }
   return (
     <>
-      <h1>wishlist</h1>
-      <section className="py-5">
+      <section className="py-10 px-10">
+      <h1>Wishlist</h1>
+
         <div className="container mx-auto">
           {wishListDetails && wishListDetails.length > 0 ? (
             <>
@@ -71,8 +72,8 @@ export default function WishList() {
                 <table className="w-full   text-gray-500 dark:text-gray-400">
                   <thead className="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                      <th scope="col" className="px-16 py-3">
-                        <span className="sr-only">Image</span>
+                      <th scope="col" className="px-6 lg:pe-12 py-3">
+                   Image
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Product
