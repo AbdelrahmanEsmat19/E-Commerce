@@ -74,7 +74,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="max-w-xl mx-auto my-10 ">
+      <div className="max-w-xl mx-20  lg:mx-auto lg:my-10 my-28 text-center  ">
         <h1 className="mb-3 text-3xl font-bold">Register:</h1>
         <div>
           {error && (

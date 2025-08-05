@@ -57,7 +57,7 @@ export default function Login() {
   }
   return (
     <>
-      <div className="max-w-xl mx-auto my-20">
+      <div className="max-w-xl mx-20  lg:mx-auto lg:my-10 my-28 text-center ">
         <h1 className="mb-5 text-3xl font-bold">Login:</h1>
         <div>
           {error && (

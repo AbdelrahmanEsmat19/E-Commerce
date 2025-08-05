@@ -97,7 +97,7 @@ export default function ForgetYourPassword() {
 
   return (
     <>
-      <form className="max-w-xl lg:mx-auto mx-20 lg:my-12 my-20" onSubmit={handleSubmit}>
+      <form className="max-w-xl text-center lg:mx-auto mx-20 lg:my-12 my-20" onSubmit={handleSubmit}>
         {step === 0 ? (
           <>
             <h2 className="font-bold my-6 text-center border p-3">
